@@ -1,0 +1,28 @@
+.counter {
+  font-size: 60px;
+}
+
+.btn-common {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.btn-right {
+  margin-left: 10px;
+}
+
+.btn-left {
+  margin-right: 10px;
+}
+
+.btn-start {
+  background-color: #56B463;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.btn-stop {
+  background-color: #BF203A;
+  color: #fff;
+  margin-top: 20px;
+}

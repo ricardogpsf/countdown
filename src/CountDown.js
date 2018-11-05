@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './CountDown.css';
 
 class CountDown extends Component {
   constructor(props) {
@@ -55,12 +56,13 @@ class CountDown extends Component {
     this.setState((state, props) => {
       const newState = {enabled: false};
       const newValue = state[timeType] + value;
-      if (newValue > -1) {
-        if (newValue > 60) {
-          newState[timeType] = 0;
-        } else {
-          newState[timeType] = newValue;
-        }
+
+      if (newValue > 59) {
+        newState[timeType] = 0;
+      } else if (newValue < 0) {
+        newState[timeType] = 59;
+      } else {
+        newState[timeType] = newValue;
       }
 
       return newState
@@ -85,22 +87,27 @@ class CountDown extends Component {
     });
   }
 
+  formatNumber(value) {
+    return value.toLocaleString('pt-BR', { minimumIntegerDigits: 2 })
+  }
+
   render() {
-    const minutes = this.state.minutes;
-    const seconds = this.state.seconds;
+    const minutes = this.formatNumber(this.state.minutes);
+    const seconds = this.formatNumber(this.state.seconds);
+    const btnStartClass = this.state.enabled ? "btn-common btn-stop" : "btn-common btn-start";
 
     return (
       <div>
-        <div>
+        <div className='counter'>
           {minutes}:{seconds}
         </div>
         <div>
-          <button onClick={(e) => this.addTime('minutes', 1)}> + </button><button onClick={(e) => this.addTime('minutes', -1)}> - </button>
+          <button className='btn-common btn-left' onClick={(e) => this.addTime('minutes', 1)}> + </button><button className='btn-common btn-left' onClick={(e) => this.addTime('minutes', -1)}> - </button>
           &nbsp;
-          <button onClick={(e) => this.addTime('seconds', 1)}> + </button><button onClick={(e) => this.addTime('seconds', -1)}> - </button>
+          <button className='btn-common btn-right' onClick={(e) => this.addTime('seconds', 1)}> + </button><button className='btn-common btn-right' onClick={(e) => this.addTime('seconds', -1)}> - </button>
         </div>
         <div>
-          <button onClick={this.toggleEnableCountDown}>{this.state.enabled ? 'Stop' : 'Start'}</button>
+          <button className={btnStartClass} onClick={this.toggleEnableCountDown}>{this.state.enabled ? 'Stop' : 'Start'}</button>
         </div>
       </div>
     );

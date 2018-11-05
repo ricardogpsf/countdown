@@ -6,10 +6,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          Countdown
-          <CountDown/>
-        </header>
+        <h2> Countdown </h2>
+        <CountDown />
       </div>
     );
   }
