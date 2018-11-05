@@ -1,3 +1,5 @@
+Access [https://ricardogpsf.github.io/countdown/](https://ricardogpsf.github.io/countdown/) to see the app running.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
