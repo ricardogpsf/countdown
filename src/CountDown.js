@@ -10,7 +10,7 @@ class CountDown extends Component {
       seconds: 0
     }
 
-    this.sound = new Audio('/ROOSTER1.wav');
+    this.sound = new Audio('ROOSTER1.wav');
     this.sound.load();
 
     this.toggleEnableCountDown = this.toggleEnableCountDown.bind(this);
